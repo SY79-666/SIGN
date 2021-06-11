@@ -16,13 +16,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="SIGN" target="1.8" />
+      <module name="SIGN" target="1.5" />
       <module name="sign-common-api" target="6" />
-      <module name="Sign-Jurisdiction" target="1.8" />
+      <module name="Sign-Jurisdiction" target="1.5" />
       <module name="sign-project" target="1.8" />
       <module name="sign-punch" target="1.5" />
-      <module name="sign-springcloud-starter" target="1.8" />
-      <module name="signin" target="1.8" />
+      <module name="sign-springcloud-starter" target="1.5" />
+      <module name="signin" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

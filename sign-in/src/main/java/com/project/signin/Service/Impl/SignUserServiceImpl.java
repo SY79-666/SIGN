@@ -73,12 +73,13 @@ public class SignUserServiceImpl implements SignUserService {
         map.remove("pageSize");
         List<SignUser> list = null;
         String obj = JSON.toJSONString(map.get(ID));
-        JSONArray jsonArray = JSON.parseArray(obj);
+        Map<String,Object> spareMap = new HashMap<>();
+//        JSONArray jsonArray = JSON.parseArray(obj);
 //        jsonArray.forEach(item -> );
         if(null != map.get(ID)){
-
+            spareMap.put(ID,obj);
+            list = signUserMapper.selectInformation(spareMap);
         }
-        list = signUserMapper.selectInformation(map);
 //        Assert.notNull(session.getAttribute("token"),"未获取到Token相关信息，无法鉴权");
 //        this.renewalToken(session.getAttribute("token").toString());
         return list;
