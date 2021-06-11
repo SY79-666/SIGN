@@ -1,0 +1,41 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: assembly-server
+
+  cloud:
+    gateway:
+      routes:
+        - id: customer
+          uri: https://gateway-server #eureka注册中心存在的服务名称
+          predicates:
+            - Path=/api/customer/** #路径配置
+            #忽略Path配置的个数，此处为1代表访问/api/customer/**时，会将api忽略，真实的访问地址为https://gateway-server/customer/**,如果为2，则为https://gateway-server/**
+            #filters:
+            #- StripPrefix=1
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/suyu?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT
+    username: root
+    password: 102907
+    type: com.alibaba.druid.pool.DruidDataSource
+
+eureka:
+  client:
+    #是否将自己注册到eureka中
+    register-with-eureka: false
+    #是否从eureka中获取信息
+    fetch-registry: false
+    service-url:
+#      defaultZone: http://127.0.0.1:8087/erueka/
+      defaultZone: http://192.168.1.153:8087/eureka/
+  server:
+    # 设为false，关闭自我保护
+    enable-self-preservation: false
+    # 清理间隔（单位毫秒，默认是60*1000）启用主动失效，并且每次主动失效检测间隔为3s
+    eviction-interval-timer-in-ms: 5000
+  instance:
+#    hostname: 192.168.1.153
+    prefer-ip-address: true

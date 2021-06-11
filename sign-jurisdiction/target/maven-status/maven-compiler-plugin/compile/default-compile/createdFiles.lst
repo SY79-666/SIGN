@@ -1,0 +1,3 @@
+com\project\jurisdiction\Service\JurisdictionService.class
+com\project\jurisdiction\Controller\JurisdictionController.class
+com\project\jurisdiction\Service\Impl\JurisdictionServiceImpl.class

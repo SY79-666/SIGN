@@ -1,0 +1,48 @@
+server:
+  port: 8088
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #  配置映射类所在包名(顺序不能修改)
+  type-aliases-package: com.project.signin.Entity
+
+  pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+spring:
+  application:
+    name: signin-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/suyu?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT
+    username: root
+    password: 102907
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 设置并开启热部署
+    devtools:
+      restart:
+        enabled: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+#    ip-address: 127.0.0.1
+    # 每隔 4秒会主动心跳一次，默认值为30s，更新自己的状态
+    lease-renewal-interval-in-seconds: 20
+    # 设置服务过期时间,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除
+    lease-expiration-duration-in-seconds: 12
+  client:
+    # 是否将自己注册到eureka中
+    register-with-eureka: true
+    # 是否从eureka中获取信息
+    fetch-registry: false
+    service-url:
+      defaultZone: http://192.168.1.153:8087/eureka/
+#    enabled: true
+    # 开启健康检查
+    healthcheck:
+      enabled: true
+    registry-fetch-interval-seconds: 8

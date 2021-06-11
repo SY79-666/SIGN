@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sign-punch" />
+        <module name="sign-springcloud-starter" />
+        <module name="sign-in" />
+        <module name="sign-common-api" />
+        <module name="Sign-Jurisdiction" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Sign-Jurisdiction" options="-parameters" />
+      <module name="sign-common-api" options="" />
+      <module name="sign-in" options="-parameters" />
+      <module name="sign-springcloud-starter" options="-parameters" />
+    </option>
+  </component>
+</project>

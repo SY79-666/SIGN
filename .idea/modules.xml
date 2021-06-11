@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/SIGN.iml" filepath="$PROJECT_DIR$/.idea/SIGN.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sign-jurisdiction/Sign-Jurisdiction.iml" filepath="$PROJECT_DIR$/sign-jurisdiction/Sign-Jurisdiction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sign-common-api/sign-common-api.iml" filepath="$PROJECT_DIR$/sign-common-api/sign-common-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sign-project/sign-project.iml" filepath="$PROJECT_DIR$/sign-project/sign-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sign-punch/sign-punch.iml" filepath="$PROJECT_DIR$/sign-punch/sign-punch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sign-springcloud-starter/sign-springcloud-starter.iml" filepath="$PROJECT_DIR$/sign-springcloud-starter/sign-springcloud-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sign-in/signin.iml" filepath="$PROJECT_DIR$/sign-in/signin.iml" />
+    </modules>
+  </component>
+</project>
