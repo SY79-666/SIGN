@@ -66,19 +66,18 @@ public class SignUserServiceImpl implements SignUserService {
     }
 
     @Override
-    public List<SignUser> selectUserInformationService(Map<String, Object> map, HttpServletRequest request) {
+    public List<SignUser> selectUserInformationService(Map<String, List<Object>> map, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Assert.notNull(session, "Session must be not null");
         map.remove("pageNumber");
         map.remove("pageSize");
         List<SignUser> list = null;
-        String obj = JSON.toJSONString(map.get(ID));
-        Map<String,Object> spareMap = new HashMap<>();
-//        JSONArray jsonArray = JSON.parseArray(obj);
-//        jsonArray.forEach(item -> );
-        if(null != map.get(ID)){
-            spareMap.put(ID,obj);
-            list = signUserMapper.selectInformation(spareMap);
+//        String obj = JSON.toJSONString(map.get(ID));
+        Map<String, Object> spareMap = new HashMap<>(map.size());
+//        Object obj = map.get(ID);
+        if (null != map.get(ID)) {
+//            spareMap.put(ID,obj.toString().replace("[","").replace("]",""));
+            list = signUserMapper.selectInformation(map);
         }
 //        Assert.notNull(session.getAttribute("token"),"未获取到Token相关信息，无法鉴权");
 //        this.renewalToken(session.getAttribute("token").toString());
@@ -105,13 +104,12 @@ public class SignUserServiceImpl implements SignUserService {
         Assert.notNull(id, "请选择需要操作的数据");
         if (null != map.get(ROLE)) {
             if (ADMIN.equals(map.get(ROLE)) || SUPER_ADMIN.equals(map.get(ROLE))) {
-                Map<String, Object> ids = new HashMap<>();
-//                id.stream().map(item -> "'" + item + "'").collect(Collectors.joining(","));
-                    if (0 != this.selectUserInformationService(ids, request).size()) {
-                        signUserMapper.deleteByPrimaryKey(ids);
-                    } else {
-                        LOGGER.error("未查询到[%s]相关信息", id);
-                    }
+                Map<String, List<Object>> ids = new HashMap<>();
+                if (0 != this.selectUserInformationService(ids, request).size()) {
+                    signUserMapper.deleteByPrimaryKey(ids);
+                } else {
+                    LOGGER.error("未查询到[%s]相关信息", id);
+                }
             } else {
                 LOGGER.error("用户权限不足");
                 try {
@@ -156,7 +154,7 @@ public class SignUserServiceImpl implements SignUserService {
      * @return AtomicBoolean
      */
     private AtomicBoolean verifyRepeatability(SignUser signUser, HttpServletRequest request) {
-        Map<String, Object> map = new HashMap<>(16);
+        Map<String, List<Object>> map = new HashMap<>(16);
         AtomicBoolean flag = new AtomicBoolean(false);
         List<Integer> flagList = new ArrayList<>();
         this.selectUserInformationService(map, request).forEach(item -> {
